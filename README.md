@@ -17,17 +17,20 @@ its geometry.
 
 ## Model and results (Phase 1)
 
-Logistic regression on distance and angle, evaluated on held-out matches:
+Logistic regression on distance and angle. Results are the mean ± standard
+deviation over 20 random train/test splits, each grouped by match:
 
 | Model | Log Loss | ROC-AUC |
 |---|---|---|
-| Naive (average goal rate) | 0.2930 | 0.5000 |
-| Logistic regression (distance + angle) | 0.2567 | 0.7595 |
-| StatsBomb xG (reference) | 0.2227 | 0.8440 |
+| Naive (average goal rate) | 0.3005 ± 0.0183 | 0.500 ± 0.000 |
+| Logistic regression (distance + angle) | 0.2702 ± 0.0166 | 0.731 ± 0.025 |
+| StatsBomb xG (reference) | 0.2431 ± 0.0148 | 0.796 ± 0.018 |
 
-StatsBomb's xG also uses defender and goalkeeper positions, so it is a ceiling
-to aim at, not a like-for-like comparison. The test set has only about 90 goals,
-so small differences in these numbers are within noise.
+The baseline beat the naive model on Log Loss in all 20 splits and closes
+roughly half of the gap to StatsBomb's xG. StatsBomb's model also sees
+defender and goalkeeper positions, so it is a ceiling to aim at, not a
+like-for-like comparison. Each test set has only about 90 goals, so single-split
+scores vary noticeably, which is why results are averaged across splits.
 
 ## Run it
 
