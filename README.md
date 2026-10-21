@@ -32,6 +32,15 @@ defender and goalkeeper positions, so it is a ceiling to aim at, not a
 like-for-like comparison. Each test set has only about 90 goals, so single-split
 scores vary noticeably, which is why results are averaged across splits.
 
+### What the metrics mean
+
+- **ROC-AUC** measures how well the model ranks shots. Pick one shot that was a
+  goal and one that wasn't: ROC-AUC is how often the model gave the goal the
+  higher xG. 0.5 is a coin flip and 1.0 is perfect ranking.
+- **Log Loss** measures how good the probabilities are. Each shot is penalized
+  based on how much probability the model put on what actually happened, and
+  confident mistakes are penalized the most. Lower is better.
+
 ## Run it
 
 ```powershell
